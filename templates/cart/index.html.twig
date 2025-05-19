@@ -42,7 +42,7 @@
 
         <h3>Total : {{ total }} €</h3>
 
-        <a class="btn btn-success">Réserver</a>
+        <a href="{{ path('ticket_checkout')}}" class="btn btn-success">Réserver</a>
         <a href="{{ path('app_offer_index') }}">Retourner à la boutique</a>
     {% endif %}
 </div>

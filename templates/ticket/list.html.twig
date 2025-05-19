@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Tickets{% endblock %}
+
+{% block body %}
+    <h1>🎟️ Mes Tickets</h1>
+
+    {% for ticket in tickets %}
+        <div class="ticket">
+            <h3>{{ ticket.offer.name }}</h3>
+            <p>Date : {{ ticket.createdAt|date('d/m/Y H:i') }}</p>
+            <hr>
+        </div>
+    {% else %}
+        <p>Aucun ticket trouvé.</p>
+    {% endfor %}
+{% endblock %}

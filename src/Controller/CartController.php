@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Offer;
 use App\Repository\OfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,4 +91,6 @@ final class CartController extends AbstractController
         $this->addFlash('warning', 'Panier vidé.');
         return $this->redirectToRoute('cart_index');
     }
+
+    
 }

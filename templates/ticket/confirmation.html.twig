@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation d'achat{% endblock %}
+
+{% block body %}
+    <h1>🎉 Merci pour votre achat !</h1>
+
+    {% for ticket in tickets %}
+        <div class="ticket">
+            <h3>Offre : {{ ticket.offer.name }}</h3>
+            <p>Date : {{ ticket.createdAt|date('d/m/Y H:i') }}</p>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock %}
