@@ -16,6 +16,21 @@ class TicketRepository extends ServiceEntityRepository
         parent::__construct($registry, Ticket::class);
     }
 
+    /**
+     * Retourne les ventes par types d'offre.
+     *
+     * @return array [ ['offer' => Offer, 'sales' => int], ... ]
+     */
+    public function countSalesByOffer(): array 
+    {
+        return $this->createQueryBuilder('t')
+            ->select('o.name AS offerName, COUNT(t.id) AS sales')
+            ->join('t.offer', 'o')
+            ->groupBy('o.id')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Ticket[] Returns an array of Ticket objects
 //     */

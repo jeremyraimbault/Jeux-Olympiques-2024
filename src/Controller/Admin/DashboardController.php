@@ -31,6 +31,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToRoute('📊 Stats des ventes', 'fas fa-chart-bar', 'admin_stats');
         return [
             MenuItem::linkToDashboard('Accueil Admin', 'fa fa-home'),
             MenuItem::linkToCrud('Offres', 'fa fa-ticket', Offer::class),

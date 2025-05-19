@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des ventes{% endblock %}
+
+{% block body %}
+    <h1>Statistiques de Ventes</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Offre</th>
+                <th>Nombre de billets vendus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+                <tr>
+                    <td>{{ stat.offerName }}</td>
+                    <td>{{ stat.sales }}</td>
+                </tr>
+            {% else %}
+                <tr><td colspan="2">Aucune vente enregistrée.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
