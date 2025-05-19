@@ -6,6 +6,8 @@ use App\Entity\Ticket;
 use App\Repository\TicketRepository;
 use App\Repository\OfferRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Endroid\QrCode\Builder\BuilderRegistryInterface;
+use Endroid\QrCode\QrCode;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,4 +73,25 @@ class TicketController extends AbstractController
             'tickets' => $tickets,
         ]);
     }
+
+    #[Route('/ticket/{id}', name: 'app_ticket_show')]
+    public function show(Ticket $ticket, BuilderRegistryInterface $builderRegistry): Response
+    {
+        //$qrCode = new QrCode($ticket->getFinalKey());
+
+        $builder = $builderRegistry->get('default');
+
+        $result = $builder->build(
+            null,
+            null,
+            null,
+            $ticket->getFinalKey()
+        );
+
+        return $this->render('ticket/show.html.twig', [
+            'ticket' => $ticket,
+            'qrCode' => $result->getDataUri(),
+        ]);
+    }
+
 }
