@@ -77,7 +77,6 @@ class TicketController extends AbstractController
     #[Route('/ticket/{id}', name: 'app_ticket_show')]
     public function show(Ticket $ticket, BuilderRegistryInterface $builderRegistry): Response
     {
-        //$qrCode = new QrCode($ticket->getFinalKey());
 
         $builder = $builderRegistry->get('default');
 
