@@ -1,38 +1,89 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Offer{% endblock %}
+{% block title %}{{ offer.name }}{% endblock %}
+
 
 {% block body %}
-    <h1>Offer</h1>
+<div style="display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+    <div style="margin-right: 50px;">
+        <img src="{{ asset('images/ticket.png') }}" alt="Ticket" style="width: 150px;">
+    </div>
+    <div>
+        <h2>{{ offer.name }}</h2>
+        <p>{{ offer.description }}</p>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ offer.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ offer.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ offer.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ offer.price }}</td>
-            </tr>
-            <tr>
-                <th>Capacity</th>
-                <td>{{ offer.capacity }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <form method="post" action="{{ path('cart_add', { id: offer.id }) }}">
+            <div>
+                <label>
+                    <input type="radio" name="option" value="solo" checked onchange="updatePrice()">
+                    <strong>Solo</strong> <br><small>1 entrée</small>
+                </label><br>
+                <label>
+                    <input type="radio" name="option" value="duo" onchange="updatePrice()">
+                    <strong>Duo</strong> <br><small>2 entrées</small>
+                </label><br>
+                <label>
+                    <input type="radio" name="option" value="familiale" onchange="updatePrice()">
+                    <strong>Familiale</strong> <br><small>4 entrées</small>
+                </label>
+            </div>
 
-    <a href="{{ path('app_offer_index') }}">back to list</a>
+            <p style="margin-top: 20px;"><strong id="price">{{ offer.price }} €</strong></p>
 
-    <a href="{{ path('app_offer_edit', {'id': offer.id}) }}">edit</a>
+            <input type="hidden" name="quantity" id="quantity" value="1">
 
-    {{ include('offer/_delete_form.html.twig') }}
+            <button type="submit" class="btn btn-primary">
+                🛒 Ajouter au panier
+            </button>
+        </form>
+
+        <br/>
+        <a href="{{ path('app_offer_index') }}" class="btn btn-primary text-white">Retourner à la boutique</a>
+        
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const basePrice = {{ offer.price }};
+        const priceDisplay = document.getElementById('price');
+        const quantityInput = document.getElementById('quantity');
+        const addButton = document.querySelector('button[type="submit"]');
+        const offerCapacity = {{ offer.capacity }};
+
+        function updatePrice() {
+            const selected = document.querySelector('input[name="option"]:checked').value;
+            let count = 1;
+
+            if (selected === 'duo') {
+                count = 2;
+            } else if (selected === 'familiale') {
+                count = 4;
+            }
+
+            priceDisplay.textContent = (basePrice * count) + ' €';
+            quantityInput.value = count;
+
+            if (count > offerCapacity) {
+                addButton.disabled = true;
+                addButton.classList.add('btn-secondary');
+                addButton.classList.remove('btn-primary');
+                addButton.textContent = 'Capacité insuffisante';
+            } else {
+                addButton.disabled = false;
+                addButton.classList.add('btn-primary');
+                addButton.classList.remove('btn-secondary');
+                addButton.textContent = '🛒 Ajouter au panier';
+            }
+        }
+
+        updatePrice();
+
+        const radios = document.querySelectorAll('input[name="option"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', updatePrice);
+        });
+    </script>
 {% endblock %}

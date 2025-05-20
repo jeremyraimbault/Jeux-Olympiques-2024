@@ -3,10 +3,17 @@
 {% block title %}Votre e-ticket{% endblock %}
 
 {% block body %}
-    <h1>E-ticket pour {{ ticket.offer.name }}</h1>
-    <p>Date d'achat : {{ ticket.createdAt|date('d/m/Y H:i') }}</p>
+<div class="container my-5">
+    <h1 class="mb-4">E-ticket pour <strong>{{ ticket.offer.name }}</strong></h1>
+    <p><strong>Date d'achat :</strong> {{ ticket.createdAt|date('d/m/Y H:i') }}</p>
 
-    <h3>QR Code</h3>
-    <img src="{{ qrCode }}" alt="QR Code du billet" />
+    <div class="my-4">
+        <h3>QR Code</h3>
+        <img src="{{ qrCode }}" alt="QR Code du billet" class="img-fluid border rounded" style="max-width: 300px;">
+    </div>
 
+    <a href="{{ path('ticket_list') }}" class="btn btn-primary mt-3">
+        <i class="bi bi-arrow-left"></i> Retour à mes tickets
+    </a>
+</div>
 {% endblock %}

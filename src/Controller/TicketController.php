@@ -50,6 +50,13 @@ class TicketController extends AbstractController
             $offer = $offerRepository->find($offerId);
             if (!$offer) continue;
 
+            if ($offer->getCapacity() < $quantity) {
+                $this->addFlash('error', "Capacité insuffisante pour l'offre : {$offer->getName()}");
+                return $this->redirectToRoute('cart_index');
+            }
+
+            $offer->setCapacity($offer->getCapacity() - $quantity);
+
             for ($i = 0; $i < $quantity; $i++) {
                 $purchaseKey = bin2hex(random_bytes(16));
                 $finalKey = hash('sha256', $user->getPrivateKey() . $purchaseKey);
@@ -64,10 +71,12 @@ class TicketController extends AbstractController
                 $em->persist($ticket);
                 $tickets[] = $ticket;
             }
+
+            $em->persist($offer);
         }
 
         $em->flush();
-        $session->remove('cart'); // vider le panier après achat
+        $session->remove('cart');
 
         return $this->render('ticket/confirmation.html.twig', [
             'tickets' => $tickets,

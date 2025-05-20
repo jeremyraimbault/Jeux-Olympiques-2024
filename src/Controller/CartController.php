@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class CartController extends AbstractController
 {
-    #[Route('/cart', name: 'cart_index')]
+    #[Route('/panier', name: 'cart_index')]
     public function index(SessionInterface $session, OfferRepository $offerRepository): Response
     {
         $cart = $session->get('cart', []);
@@ -36,7 +36,7 @@ final class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/cart/add/{id}', name: 'cart_add')]
+    #[Route('/panier/add/{id}', name: 'cart_add')]
     public function add($id, Request $request, SessionInterface $session, OfferRepository $offerRepository): Response
     {
         $quantity = (int) $request->request->get('quantity', 1);
@@ -67,8 +67,8 @@ final class CartController extends AbstractController
         $cart[$id] = ($cart[$id] ?? 0) + $quantity;
         $session->set('cart', $cart);
 
-        $this->addFlash('success', 'Offre ajoutée au panier !');
-        return $this->redirectToRoute('app_offer_index');
+        $this->addFlash('cart_added', true);
+        return $this->redirectToRoute('homepage'); 
     }
 
     #[Route('/cart/remove/{id}', name: 'cart_remove')]

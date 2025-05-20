@@ -1,15 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block title %}Statistiques des ventes{% endblock %}
 
-{% block body %}
-    <h1>Statistiques de Ventes</h1>
+{% block content %}
+    <h1 class="mb-4">Statistiques des ventes</h1>
 
-    <table class="table table-bordered">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Offre</th>
-                <th>Nombre de billets vendus</th>
+                <th>Tickets vendus</th>
             </tr>
         </thead>
         <tbody>

@@ -1,0 +1,232 @@
+.hero{
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero-logo img{
+    width: 453px;
+    height: 456px;
+}
+.hero-logo h1 {
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: 900;
+}
+.hero-logo p {
+    max-width: 700px;
+    margin: 20px auto;
+    font-size: 25px;
+    font-style: italic;
+}
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    font-weight: medium;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* 3 slides */
+}
+.carousel-slide {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.carousel-slide img {
+    transition: transform 0.3s ease-in-out;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+.carousel-slide.active {
+    display: flex;
+}
+.carousel-image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 450px;
+}
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+}
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+.left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+}
+.left-arrow {
+    left: 20px;
+}
+.right-arrow {
+    right: 20px;
+}
+.zoom-img {
+    transform-origin: center;
+    transform: scale(1.2);
+}
+.dezoom-img {
+    transform-origin: center;
+    transform: scale(0.8);
+}
+.sports {
+    background-color: #e0e0e0;
+    padding: 60px 20px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carrousel dans la section sports */
+.sports-carousel {
+    position: relative;
+    width: 600px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.sports-carousel .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.sports-carousel .carousel-slide.active {
+    display: flex;
+}
+
+.sports-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.sports-carousel .carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+}
+
+.sports-carousel .left-arrow, .sports-carousel .right-arrow {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.sports-text {
+    max-width: 450px;
+}
+
+.sports-text h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.sports-text p {
+    line-height: 1.5;
+    font-size: 25px;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.sports-text .btn {
+    align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive pour mobiles */
+@media (max-width: 768px) {
+    .sports {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .sports-carousel {
+        width: 100%;
+        height: 250px;
+    }
+    .sports-text {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+    .carousel-controls {
+        display: none;
+    }
+}

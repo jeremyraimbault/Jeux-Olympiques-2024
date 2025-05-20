@@ -1,75 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Offer index{% endblock %}
-
-{% block stylesheets %}
-    <style>
-        .quantity-btn {
-            margin: 5px;
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            background: #f5f5f5;
-            cursor: pointer;
-        }
-        .quantity-btn.selected {
-            background-color: #007bff;
-            color: white;
-            border-color: #0056b3;
-        }
-    </style>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        document.querySelectorAll('.offer-form').forEach(form => {
-            const buttons = form.querySelectorAll('.quantity-btn');
-            const input = form.querySelector('.quantity-input');
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Reset all buttons
-                    buttons.forEach(b => b.classList.remove('selected'));
-                    // Highlight selected
-                    btn.classList.add('selected');
-                    // Set value
-                    input.value = btn.dataset.qty;
-                });
-            });
-        });
-    </script>
-{% endblock %}
+{% block title %}Nos Offres de Billets{% endblock %}
 
 {% block body %}
-    <h1>Offer index</h1>
+<div class="container py-5">
 
-    {% for offer in offers %}
-        <div>
-            <h3>{{ offer.name }}</h3>
-            <p>{{ offer.description }}</p>
-            <p>{{ offer.price }} €</p>
-            <form action="{{ path('cart_add', {id: offer.id}) }}" method="POST" class="offer-form">
-                <input type="hidden" name="quantity" value="1" class="quantity-input">
-
-                <div class="quantity-buttons">
-                    <button type="button" class="quantity-btn" data-qty="1">🎟️ Solo</button>
-                    <button type="button" class="quantity-btn" data-qty="2">👥 Duo</button>
-                    <button type="button" class="quantity-btn" data-qty="4">👨‍👩‍👧‍👦 Familiale</button>
-                </div>
-
-                <button type="submit">Ajouter au panier</button>
-            </form>
-            <a href="{{ path('app_offer_show', {'id': offer.id}) }}">show</a>
-            <a href="{{ path('app_offer_edit', {'id': offer.id}) }}">edit</a>
+  <div class="row align-items-center mb-4">
+    <div class="col-md-6 text-center">
+      <!-- Carousel des offres -->
+      <div id="ticketCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner bg-light p-5">
+          <div class="carousel-item active">
+            <h2 style="font-weight:800; font-size:50px;">Nos Offres de Billets</h2>
+            <p class="fst-italic" style="font-size:25px;">
+              Que vous veniez seul à deux ou en famille, nous avons l’offre idéale pour vivre la magie des Jeux Olympiques !
+            </p>
+            <ul class="list-unstyled">
+              <li>🎟️ <strong>Offre Solo</strong> : 1 entrée – parfait pour les passionnés.</li>
+              <li>🧑‍🤝‍🧑 <strong>Offre Duo</strong> : 2 entrées – partagez l’expérience à deux.</li>
+              <li>👨‍👩‍👧‍👦 <strong>Offre Familiale</strong> : 4 entrées – vivez l’événement ensemble.</li>
+            </ul>
+          </div>
         </div>
-    {% else %}
-        <tr>
-            <td colspan="6">no records found</td>
-        </tr>
-    {% endfor %}
-    
-    <a href="{{ path('cart_index')}}">Accéder au Panier</a>
+        <button class="carousel-control-prev" type="button" data-bs-target="#ticketCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#ticketCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_offer_new') }}">Create new</a>
-    {% endif %}
+    <div class="col-md-6 text-end">
+      <a href="/#sports" class="btn btn-outline-dark mt-3">Les épreuves</a>
+    </div>
+  </div>
+
+  <!-- Cartes dynamiques -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    {% for offer in offers %}
+      <div class="col">
+        <div class="card h-100 text-center p-3">
+          <div class="mb-2">
+            <i class="bi bi-ticket-perforated" style="font-size: 2rem;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ offer.name }}</h5>
+            {% if offer.capacity > 0 %}
+              <p class="card-text text-muted">À partir de {{ offer.price }}€</p>
+              <a href="{{ path('app_offer_show', {'id': offer.id}) }}" class="btn btn-primary btn-sm">Voir l'offre</a>
+            {% else %}
+              <button class="btn btn-secondary btn-sm" disabled>Plus de places disponibles</button>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <p>Aucune offre disponible pour le moment.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+            {% if page > 1 %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ page - 1 }}">&laquo;</a>
+                </li>
+            {% endif %}
+
+            {% for i in 1..totalPages %}
+                <li class="page-item {% if i == page %}active{% endif %}">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page < totalPages %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ page + 1 }}">&raquo;</a>
+                </li>
+            {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
 {% endblock %}

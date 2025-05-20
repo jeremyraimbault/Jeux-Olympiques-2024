@@ -3,15 +3,31 @@
 {% block title %}Mes Tickets{% endblock %}
 
 {% block body %}
-    <h1>🎟️ Mes Tickets</h1>
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">🎟️ Mes Tickets</h1>
 
-    {% for ticket in tickets %}
-        <div class="ticket">
-            <h3>{{ ticket.offer.name }}</h3>
-            <p>Date : {{ ticket.createdAt|date('d/m/Y H:i') }}</p>
-            <hr>
-        </div>
-    {% else %}
-        <p>Aucun ticket trouvé.</p>
-    {% endfor %}
+        {% if tickets is empty %}
+            <div class="alert alert-info text-center">
+                Aucun ticket trouvé.
+            </div>
+        {% else %}
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for ticket in tickets %}
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ ticket.offer.name }}</h5>
+                                <p class="card-text">
+                                    <strong>Date :</strong> {{ ticket.createdAt|date('d/m/Y H:i') }}
+                                </p>
+                                <a href="{{ path('app_ticket_show', { id: ticket.id }) }}" class="btn btn-primary mt-3">
+                                    Voir mon ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

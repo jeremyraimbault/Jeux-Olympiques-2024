@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AdminStatsController extends AbstractController
 {
-    #[Route('/admin/stats', name: 'app_admin_stats')]
+    #[Route('/admin/stats', name: 'admin_stats')]
     public function index(TicketRepository $ticketRepository): Response
     {
         $stats = $ticketRepository->countSalesByOffer();

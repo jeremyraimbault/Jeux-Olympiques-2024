@@ -17,7 +17,6 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        // Redirige vers la page CRUD des offres
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
 
         return $this->redirect($routeBuilder->setController(OfferCrudController::class)->generateUrl());
@@ -26,15 +25,13 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Administrateur - Jeux Olympiques Paris 2024');
+            ->setTitle('Tableau de bord - Jeux Olympiques Paris 2024');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToRoute('📊 Stats des ventes', 'fas fa-chart-bar', 'admin_stats');
-        return [
-            MenuItem::linkToDashboard('Accueil Admin', 'fa fa-home'),
-            MenuItem::linkToCrud('Offres', 'fa fa-ticket', Offer::class),
-        ];
+        yield MenuItem::linkToDashboard('🏠 Accueil Admin', 'fa fa-home');
+        yield MenuItem::linkToCrud('🎟 Offres de billets', 'fa fa-ticket', Offer::class);
+        yield MenuItem::linkToRoute('📊 Statistiques de ventes', 'fas fa-chart-bar', 'admin_stats');
     }
 }

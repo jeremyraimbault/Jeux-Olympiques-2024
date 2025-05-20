@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - JO PARIS 2024{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="css/home.css">
+{% endblock %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero-logo">
+        <img src="{{ asset('images/logo_paris2024.png') }}" alt="Paris 2024">
+        <h1>Bienvenue aux Jeux Olympiques</h1>
+        <p>
+            Bienvenue sur notre site consacré aux Jeux Olympiques de Paris 2024 ! <br>
+            Découvrez toutes les propositions de billets électroniques, administrez vos réservations avec une aisance totale et vivez l’expérience des Jeux Olympiques d’une manière inédite.
+        </p>
+        <div class="hero-buttons">
+            <a href="#sports" class="btn">Les Épreuves</a>
+            <a href="#" class="btn">Boutique</a>
+        </div>
+    </div>
+</section>
+
+<section class="carousel">
+    <div class="carousel-track">
+        <div class="carousel-slide active">
+            <img src="{{ asset('images/eiffel_jo.jpg') }}" alt="Tour Eiffel JO">
+            <div class="caption">Vivez les JO de Paris au cœur de l’action</div>
+        </div>
+        <div class="carousel-slide">
+            <img src="{{ asset('images/sports.jpg') }}" alt="Épreuves" class="zoom-img">
+            <div class="caption">Découvrez les épreuves et l’intensité du sport</div>
+        </div>
+    </div>
+
+    <div class="carousel-controls">
+        <button class="left-arrow">◀</button>
+        <button class="right-arrow">▶</button>
+    </div>
+</section>
+
+<section class="sports" id="sports">
+    <div class="sports-carousel">
+        <div class="carousel-slide active">
+            <img src="{{ asset('images/natation.jpg') }}" alt="Sport 1" class="dezoom-img">
+        </div>
+        <div class="carousel-slide">
+            <img src="{{ asset('images/médailles.jpg') }}" alt="Sport 2" class="dezoom-img">
+        </div>
+        <div class="carousel-controls">
+            <button class="left-arrow">◀</button>
+            <button class="right-arrow">▶</button>
+        </div>
+    </div>
+
+    <div class="sports-text">
+        <h2>Les Épreuves</h2>
+        <p>
+            Plongez dans l'essence des sports olympiques.<br>
+            Des épreuves de vitesse à l'art du mouvement, les Jeux Olympiques offrent des compétitions pour tous les passionnés.
+        </p>
+        <p>
+            Visitez notre boutique dédiée pour acquérir les billets officiels.
+        </p>
+        <a href="/boutique" class="btn">Boutique</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carrousel principal
+            const mainCarousel = document.querySelector('.carousel');
+            const mainSlides = mainCarousel.querySelectorAll('.carousel-slide');
+            const mainNextBtn = mainCarousel.querySelector('.right-arrow');
+            const mainPrevBtn = mainCarousel.querySelector('.left-arrow');
+            let mainCurrentSlide = 0;
+
+            function showMainSlide(index) {
+                mainSlides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextMainSlide() {
+                mainCurrentSlide = (mainCurrentSlide + 1) % mainSlides.length;
+                showMainSlide(mainCurrentSlide);
+            }
+
+            mainNextBtn.addEventListener('click', () => {
+                nextMainSlide();
+                resetMainAutoSlide();
+            });
+
+            mainPrevBtn.addEventListener('click', () => {
+                mainCurrentSlide = (mainCurrentSlide - 1 + mainSlides.length) % mainSlides.length;
+                showMainSlide(mainCurrentSlide);
+                resetMainAutoSlide();
+            });
+
+            showMainSlide(mainCurrentSlide);
+
+            let mainAutoSlideInterval = setInterval(nextMainSlide, 2500);
+
+            function resetMainAutoSlide() {
+                clearInterval(mainAutoSlideInterval);
+                mainAutoSlideInterval = setInterval(nextMainSlide, 2500);
+            }
+
+            // Carrousel sports
+            const sportsCarousel = document.querySelector('.sports-carousel');
+            const sportsSlides = sportsCarousel.querySelectorAll('.carousel-slide');
+            const sportsNextBtn = sportsCarousel.querySelector('.right-arrow');
+            const sportsPrevBtn = sportsCarousel.querySelector('.left-arrow');
+            let sportsCurrentSlide = 0;
+
+            function showSportsSlide(index) {
+                sportsSlides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSportsSlide() {
+                sportsCurrentSlide = (sportsCurrentSlide + 1) % sportsSlides.length;
+                showSportsSlide(sportsCurrentSlide);
+            }
+
+            sportsNextBtn.addEventListener('click', () => {
+                nextSportsSlide();
+                resetSportsAutoSlide();
+            });
+
+            sportsPrevBtn.addEventListener('click', () => {
+                sportsCurrentSlide = (sportsCurrentSlide - 1 + sportsSlides.length) % sportsSlides.length;
+                showSportsSlide(sportsCurrentSlide);
+                resetSportsAutoSlide();
+            });
+
+            showSportsSlide(sportsCurrentSlide);
+
+            let sportsAutoSlideInterval = setInterval(nextSportsSlide, 2500);
+
+            function resetSportsAutoSlide() {
+                clearInterval(sportsAutoSlideInterval);
+                sportsAutoSlideInterval = setInterval(nextSportsSlide, 2500);
+            }
+        });
+    </script>
+{% endblock %}

@@ -12,14 +12,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/offer')]
+#[Route('/boutique')]
 final class OfferController extends AbstractController
 {
     #[Route(name: 'app_offer_index', methods: ['GET'])]
-    public function index(OfferRepository $offerRepository): Response
+    public function index(Request $request, OfferRepository $offerRepository): Response
     {
+        $limit = 12;
+        $page = max(1, $request->query->getInt('page', 1));
+        $offset = ($page - 1) * $limit;
+
+        $totalOffers = $offerRepository->count([]);
+        $totalPages = ceil($totalOffers / $limit);
+
         return $this->render('offer/index.html.twig', [
             'offers' => $offerRepository->findAll(),
+            'page' => $page,
+            'totalPages' =>$totalPages,
         ]);
     }
 

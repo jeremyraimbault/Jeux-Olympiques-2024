@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'user')]
     private Collection $tickets;
 
+    #[ORM\Column(length: 255)]
+    private ?string $username = null;
+
     public function __construct() 
     {
         $this->privateKey = bin2hex(random_bytes(16));
@@ -161,6 +164,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $ticket->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
 
         return $this;
     }
