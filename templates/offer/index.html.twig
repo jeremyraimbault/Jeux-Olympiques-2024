@@ -46,7 +46,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ offer.name }}</h5>
-            {% if offer.capacity > 0 %}
+            {% if offer.remainingCapacity > 0 %}
               <p class="card-text text-muted">À partir de {{ offer.price }}€</p>
               <a href="{{ path('app_offer_show', {'id': offer.id}) }}" class="btn btn-primary btn-sm">Voir l'offre</a>
             {% else %}

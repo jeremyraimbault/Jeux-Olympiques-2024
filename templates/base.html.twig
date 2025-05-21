@@ -1,138 +1,187 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}JO PARIS 2024{% endblock %}</title>
-        <link rel="icon" type="image/png" href="{{ asset('images/Logo_Olympique_JO.png') }}">
-        
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-        
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        {% block stylesheets %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}JO PARIS 2024{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/Logo_Olympique_JO.png') }}">
 
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
-                <div class="navbar-left">
-                    <a href="{{ path('homepage') }}" class="d-flex align-items-center text-decoration-none text-dark">
-                        <img src="{{ asset('/images/Logo_Olympique_JO.png') }}" alt="Anneaux olympiques" class="logo-rings">
-                        <span class="site-title ms-2">JO PARIS 2024</span>
-                    </a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/#sports">Les Épreuves</a></li>
-                    <li><a href="/boutique">Boutique</a></li>
-                </ul>
-                <div class="navbar-end">
-                    <div class="cart">
-                        <a href="/panier">
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a href="{{ path('homepage') }}" class="navbar-brand d-flex align-items-center">
+                    <img src="{{ asset('/images/Logo_Olympique_JO.png') }}" alt="Anneaux olympiques" height="40" class="me-2">
+                    <span class="fs-4 fw-bold">JO PARIS 2024</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                    aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/#sports" class="nav-link">Les Épreuves</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/boutique" class="nav-link">Boutique</a>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="/panier" class="position-relative text-dark">
+                            <img src="{{ asset('/images/cart.svg') }}" alt="Panier" height="24">
                             {% if cart_count > 0 %}
-                                <span class="cart-count">{{ cart_count }}</span>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ cart_count }}
+                                </span>
                             {% endif %}
-                            <img src="{{ asset('/images/cart.svg') }}" alt="Panier" class="cart-icon">
                         </a>
-                    </div>
-                    <div class="navbar-right hover-group">
-                        {% if app.user %}
-                            <div class="user-logged">
-                                <button class="user-toggle" id="userToggleBtn">
-                                    <img src="{{ asset('/images/user.png') }}" class="user-icon">
-                                    {{ app.user.username }}
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
 
-                                <ul class="user-dropdown-content" id="userDropdownContent">
-                                    <li><a href="{{ path('ticket_list') }}">🎟 Mes Tickets</a></li>
-                                    <li><a href="{{ path('app_logout') }}">🔓 Déconnexion</a></li>
+                        {% if app.user %}
+                            <div class="dropdown">
+                                <button class="btn btn-light d-flex align-items-center gap-2" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('/images/user.png') }}" alt="Utilisateur" height="24" class="rounded-circle">
+                                    <span>{{ app.user.username }}</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="{{ path('ticket_list') }}">🎟 Mes Tickets</a></li>
                                     {% if 'ROLE_ADMIN' in app.user.roles %}
-                                        <li><a href="{{ path('admin') }}">⚙️ Menu Admin</a></li>
+                                        <li><a class="dropdown-item" href="{{ path('admin') }}">⚙️ Menu Admin</a></li>
                                     {% endif %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{ path('app_logout') }}">🔓 Déconnexion</a></li>
                                 </ul>
                             </div>
                         {% else %}
-                            <a href="{{ path('app_login') }}">
-                                <img src="{{ asset('/images/user.png') }}" class="user-icon">
+                            <a href="{{ path('app_login') }}" class="btn btn-outline-primary d-flex align-items-center gap-2">
+                                <img src="{{ asset('/images/user.png') }}" alt="Connexion" height="24" class="rounded-circle">
+                                Se connecter
                             </a>
-                            <a href="{{ path('app_login') }}" class="btn-connect">Se connecter</a>
                         {% endif %}
                     </div>
                 </div>
-            </nav>
-        </header>
-
-
-        <main>
-            {% block body %}{% endblock %}
-        </main>
-
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <img src="{{ asset('images/Logo_Olympique_JO.png') }}" alt="Logo JO Paris 2024" class="footer-logo">
-                </div>
-                <nav class="footer-nav">
-                    <a href="/#sports">Les Épreuves</a>
-                    <a href="/boutique">Boutique</a>
-                </nav>
             </div>
-        </footer>
+        </nav>
+    </header>
 
-        <!-- Modal Bootstrap -->
-        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cartModalLabel">Produit ajouté au panier 🛒</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                    </div>
-                    <div class="modal-body">
-                        Votre offre a bien été ajoutée au panier.
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ path('app_offer_index') }}" class="btn btn-outline-primary">Retourner à la boutique</a>
-                        <a href="{{ path('cart_index') }}" class="btn btn-primary">Voir le panier</a>
-                    </div>
+    <!-- MAIN CONTENT -->
+    <main class="container my-4">
+        {% block body %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-light pt-4 mt-auto">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-3 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-start">
+                    <img src="{{ asset('images/Logo_Olympique_JO.png') }}" alt="Logo JO Paris 2024" height="50">
+                </div>
+
+                <div class="col-md-9">
+                    <nav class="d-flex justify-content-center justify-content-md-end gap-4 flex-wrap mb-2">
+                        <a href="/#sports" class="text-decoration-none text-dark fw-semibold">Les Épreuves</a>
+                        <a href="/boutique" class="text-decoration-none text-dark fw-semibold">Boutique</a>
+                    </nav>
+                    <nav class="d-flex justify-content-center justify-content-md-end gap-4 flex-wrap">
+                        <a href="{{ path('app_privacy_policy') }}" class="text-decoration-none text-muted small">Politique de confidentialité</a>
+                        <a href="{{ path('app_terms_of_use') }}" class="text-decoration-none text-muted small">Conditions d'utilisation</a>
+                        <a href="{{ path('app_cookie_policy') }}" class="text-decoration-none text-muted small">Politique des cookies</a>
+                        <a href="{{ path('app_cookie_settings') }}" class="text-decoration-none text-muted small">Paramètres des cookies</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="text-center text-muted small mt-3">
+                &copy; {{ "now"|date("Y") }} JO PARIS 2024 - Tous droits réservés
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consentement Modal -->
+    <div id="cookieConsentModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title">Gestion des cookies</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Ce site utilise des cookies pour vous offrir la meilleure expérience possible.</p>
+                    <p>Vous pouvez accepter tous les cookies ou personnaliser vos préférences.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ path('app_cookie_settings') }}" class="btn btn-secondary">Paramètres</a>
+                    <button id="acceptCookies" class="btn btn-primary">Tout accepter</button>
+                    <button id="rejectCookies" class="btn btn-outline-secondary">Tout refuser</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        {% block javascripts %}
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Modal Ajout au Panier -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Produit ajouté au panier 🛒</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    Votre offre a bien été ajoutée au panier.
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ path('app_offer_index') }}" class="btn btn-outline-primary">Retourner à la boutique</a>
+                    <a href="{{ path('cart_index') }}" class="btn btn-primary">Voir le panier</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    {% for _ in app.flashes('cart_added') %}
-                        var cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-                        cartModal.show();
-                    {% endfor %}
+    <!-- JS -->
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+        <script>
+            // Modal panier
+            document.addEventListener("DOMContentLoaded", function () {
+                {% for _ in app.flashes('cart_added') %}
+                    var cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+                    cartModal.show();
+                {% endfor %}
+            });
+
+            // Gestion des cookies
+            document.addEventListener('DOMContentLoaded', function () {
+                const modal = new bootstrap.Modal(document.getElementById('cookieConsentModal'));
+                if (!localStorage.getItem('cookie_consent')) {
+                    modal.show();
+                }
+
+                document.getElementById('acceptCookies').addEventListener('click', () => {
+                    localStorage.setItem('cookie_consent', 'all');
+                    modal.hide();
                 });
-            </script>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const toggleBtn = document.getElementById('userToggleBtn');
-                    const dropdown = document.getElementById('userDropdownContent');
-
-                    toggleBtn.addEventListener('click', (e) => {
-                        e.stopPropagation(); // éviter la propagation du clic
-                        dropdown.classList.toggle('active');
-                    });
-
-                    // Ferme le menu si clic en dehors
-                    document.addEventListener('click', (e) => {
-                        if (!dropdown.contains(e.target) && !toggleBtn.contains(e.target)) {
-                            dropdown.classList.remove('active');
-                        }
-                    });
+                document.getElementById('rejectCookies').addEventListener('click', () => {
+                    localStorage.setItem('cookie_consent', 'none');
+                    modal.hide();
                 });
-            </script>
-
-        {% endblock %}
-
-    </body>
+            });
+        </script>
+    {% endblock %}
+</body>
 </html>

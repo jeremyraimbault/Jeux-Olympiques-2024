@@ -36,8 +36,13 @@ class OfferCrudController extends AbstractCrudController
             IdField::new('id')->onlyOnIndex(),
             TextField::new('name', 'Nom'),
             TextareaField::new('description', 'Description'),
-            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
+            MoneyField::new('price', 'Prix')
+                ->setCurrency('EUR')
+                ->setStoredAsCents(false),
             IntegerField::new('capacity', 'Capacité'),
+            IntegerField::new('remainingCapacity', 'Capacité restante')
+                ->setDisabled(true)
+                ->setHelp('Capacité restante après la vente'),
         ];
     }
 }

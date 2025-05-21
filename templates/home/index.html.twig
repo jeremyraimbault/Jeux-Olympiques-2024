@@ -4,69 +4,86 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 {% endblock %}
 
 {% block body %}
-<section class="hero">
-    <div class="hero-logo">
-        <img src="{{ asset('images/logo_paris2024.png') }}" alt="Paris 2024">
-        <h1>Bienvenue aux Jeux Olympiques</h1>
-        <p>
-            Bienvenue sur notre site consacré aux Jeux Olympiques de Paris 2024 ! <br>
+<div class="container py-5">
+    <section class="text-center mb-5">
+        <img src="{{ asset('images/logo_paris2024.png') }}" alt="Paris 2024" class="img-fluid mb-3" style="max-height: 300px;">
+        <h1 class="display-4 fw-bold">Bienvenue aux Jeux Olympiques</h1>
+        <p class="lead fst-italic">
+            Bienvenue sur notre site consacré aux Jeux Olympiques de Paris 2024 !<br>
             Découvrez toutes les propositions de billets électroniques, administrez vos réservations avec une aisance totale et vivez l’expérience des Jeux Olympiques d’une manière inédite.
         </p>
-        <div class="hero-buttons">
-            <a href="#sports" class="btn">Les Épreuves</a>
-            <a href="#" class="btn">Boutique</a>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="#sports" class="btn btn-outline-dark">Les Épreuves</a>
+            <a href="#" class="btn btn-outline-secondary">Boutique</a>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="carousel">
-    <div class="carousel-track">
-        <div class="carousel-slide active">
-            <img src="{{ asset('images/eiffel_jo.jpg') }}" alt="Tour Eiffel JO">
-            <div class="caption">Vivez les JO de Paris au cœur de l’action</div>
+    <section class="mb-5">
+        <div id="mainCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner rounded shadow">
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/carrousel_presentation_1.jpg') }}" class="d-block w-100" alt="Tour Eiffel JO">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="bg-dark bg-opacity-50 rounded p-2">
+                            <h5>Vivez les JO de Paris au cœur de l’action</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/carrousel_presentation_2.jpg') }}" class="d-block w-100" alt="Épreuves">
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="bg-dark bg-opacity-50 rounded p-2">
+                            <h5>Découvrez les épreuves et l’intensité du sport</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
-        <div class="carousel-slide">
-            <img src="{{ asset('images/sports.jpg') }}" alt="Épreuves" class="zoom-img">
-            <div class="caption">Découvrez les épreuves et l’intensité du sport</div>
-        </div>
-    </div>
+    </section>
 
-    <div class="carousel-controls">
-        <button class="left-arrow">◀</button>
-        <button class="right-arrow">▶</button>
-    </div>
-</section>
+    <section id="sports" class="row align-items-center bg-light p-5 rounded shadow">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div id="sportsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded shadow">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('images/carrousel_epreuves_2.jpg') }}" class="d-block w-100" alt="Sport 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/carrousel_epreuves_1.jpg') }}" class="d-block w-100" alt="Sport 2">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#sportsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#sportsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
 
-<section class="sports" id="sports">
-    <div class="sports-carousel">
-        <div class="carousel-slide active">
-            <img src="{{ asset('images/natation.jpg') }}" alt="Sport 1" class="dezoom-img">
+        <div class="col-lg-6 text-center">
+            <h2 class="display-6 fw-bold">Les Épreuves</h2>
+            <p class="lead fst-italic">
+                Plongez dans l'essence des sports olympiques.<br>
+                Des épreuves de vitesse à l'art du mouvement, les Jeux Olympiques offrent des compétitions pour tous les passionnés.
+            </p>
+            <p class="fst-italic">
+                Visitez notre boutique dédiée pour acquérir les billets officiels.
+            </p>
+            <a href="/boutique" class="btn btn-outline-dark mt-3">Boutique</a>
         </div>
-        <div class="carousel-slide">
-            <img src="{{ asset('images/médailles.jpg') }}" alt="Sport 2" class="dezoom-img">
-        </div>
-        <div class="carousel-controls">
-            <button class="left-arrow">◀</button>
-            <button class="right-arrow">▶</button>
-        </div>
-    </div>
-
-    <div class="sports-text">
-        <h2>Les Épreuves</h2>
-        <p>
-            Plongez dans l'essence des sports olympiques.<br>
-            Des épreuves de vitesse à l'art du mouvement, les Jeux Olympiques offrent des compétitions pour tous les passionnés.
-        </p>
-        <p>
-            Visitez notre boutique dédiée pour acquérir les billets officiels.
-        </p>
-        <a href="/boutique" class="btn">Boutique</a>
-    </div>
-</section>
+    </section>
+</div>
 {% endblock %}
 
 {% block javascripts %}

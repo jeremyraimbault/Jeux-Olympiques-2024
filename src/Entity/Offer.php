@@ -33,6 +33,9 @@ class Offer
     #[ORM\OneToMany(targetEntity: Ticket::class, mappedBy: 'offer')]
     private Collection $tickets;
 
+    #[ORM\Column]
+    private ?int $remainingCapacity = null;
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -86,8 +89,17 @@ class Offer
 
     public function setCapacity(int $capacity): static
     {
-        $this->capacity = $capacity;
+        if ($this->capacity !== null && $this->remainingCapacity !== null) {
+        $difference = $capacity - $this->capacity;
+        $this->remainingCapacity += $difference;
 
+        $this->remainingCapacity = max(0, $this->remainingCapacity);
+        } elseif ($this->remainingCapacity === null) {
+            $this->remainingCapacity = $capacity;
+        }
+
+        $this->capacity = $capacity;
+        
         return $this;
     }
 
@@ -112,11 +124,22 @@ class Offer
     public function removeTicket(Ticket $ticket): static
     {
         if ($this->tickets->removeElement($ticket)) {
-            // set the owning side to null (unless already changed)
             if ($ticket->getOffer() === $this) {
                 $ticket->setOffer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRemainingCapacity(): ?int
+    {
+        return $this->remainingCapacity;
+    }
+
+    public function setRemainingCapacity(int $remainingCapacity): static
+    {
+        $this->remainingCapacity = $remainingCapacity;
 
         return $this;
     }

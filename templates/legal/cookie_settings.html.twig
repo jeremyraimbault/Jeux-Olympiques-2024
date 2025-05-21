@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}Paramètres des cookies{% endblock %}
+
+{% block body %}
+<h1>Paramètres des cookies</h1>
+
+<p>Vous pouvez ici gérer vos préférences concernant l’utilisation des cookies :</p>
+
+<form id="cookie-settings-form">
+    <label>
+        <input type="checkbox" checked disabled />
+        Cookies nécessaires (toujours actifs)
+    </label><br>
+
+    <label>
+        <input type="checkbox" name="external" />
+        Cookies de services externes (cartes, vidéos…)
+    </label><br><br>
+
+    <button type="submit">Enregistrer mes choix</button>
+</form>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById('cookie-settings-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const preferences = {
+                necessary: true,
+                external: document.querySelector('input[name="external"]').checked,
+            };
+
+            localStorage.setItem('cookieConsent', JSON.stringify(preferences));
+            alert("Vos préférences ont été enregistrées.");
+        });
+    </script>
+{% endblock %}

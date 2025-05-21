@@ -50,12 +50,12 @@ class TicketController extends AbstractController
             $offer = $offerRepository->find($offerId);
             if (!$offer) continue;
 
-            if ($offer->getCapacity() < $quantity) {
+            if ($offer->getRemainingCapacity() < $quantity) {
                 $this->addFlash('error', "Capacité insuffisante pour l'offre : {$offer->getName()}");
                 return $this->redirectToRoute('cart_index');
             }
 
-            $offer->setCapacity($offer->getCapacity() - $quantity);
+            $offer->setRemainingCapacity($offer->getRemainingCapacity() - $quantity);
 
             for ($i = 0; $i < $quantity; $i++) {
                 $purchaseKey = bin2hex(random_bytes(16));

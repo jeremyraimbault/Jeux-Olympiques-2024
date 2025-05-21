@@ -1,26 +1,29 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block title %}Statistiques des ventes{% endblock %}
-
 {% block content %}
-    <h1 class="mb-4">Statistiques des ventes</h1>
+    <div class="container mt-4">
+        <h1 class="mb-4">Statistiques des ventes</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Offre</th>
-                <th>Tickets vendus</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for stat in stats %}
+        <table class="table table-striped text-center">
+            <thead>
                 <tr>
-                    <td>{{ stat.offerName }}</td>
-                    <td>{{ stat.sales }}</td>
+                    <th>Offre</th>
+                    <th>Tickets vendus</th>
+                    <th>Tickets restants</th>
                 </tr>
-            {% else %}
-                <tr><td colspan="2">Aucune vente enregistrée.</td></tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for stat in stats %}
+                    <tr>
+                        <td>{{ stat.offerName }}</td>
+                        <td>{{ stat.sales }}</td>
+                        <td>{{ stat.remainingCapacity }}</td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="2">Aucune vente enregistrée.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
