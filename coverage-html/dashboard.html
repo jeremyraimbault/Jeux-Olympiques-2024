@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\raimb\OneDrive - STUDI\3. Développement d'une solution digitale\.Projet\Jeux-Olympiques-2024\src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\Users\raimb\OneDrive - STUDI\3. Développement d'une solution digitale\.Projet\Jeux-Olympiques-2024\src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/AdminStatsController.php.html#10">App\Controller\AdminStatsController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">16%</td></tr>
+       <tr><td><a href="Controller/Admin/OfferCrudController.php.html#14">App\Controller\Admin\OfferCrudController</a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="Entity/User.php.html#13">App\Entity\User</a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#10">App\Entity\Offer</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#10">App\Controller\SecurityController</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Controller/CartController.php.html#12">App\Controller\CartController</a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#8">App\Entity\Ticket</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Controller/OfferController.php.html#15">App\Controller\OfferController</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Entity/User.php.html#13">App\Entity\User</a></td><td class="text-right">37</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#10">App\Entity\Offer</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Controller/CartController.php.html#12">App\Controller\CartController</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/OfferController.php.html#15">App\Controller\OfferController</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">8</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/AdminStatsController.php.html#12"><abbr title="App\Controller\AdminStatsController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/Admin/OfferCrudController.php.html#21"><abbr title="App\Controller\Admin\OfferCrudController::configureCrud">configureCrud</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/OfferController.php.html#82"><abbr title="App\Controller\OfferController::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#21"><abbr title="App\Controller\SecurityController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#109"><abbr title="App\Entity\Offer::getTickets">getTickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#114"><abbr title="App\Entity\Offer::addTicket">addTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#124"><abbr title="App\Entity\Offer::removeTicket">removeTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#36"><abbr title="App\Entity\Ticket::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Ticket.php.html#67"><abbr title="App\Entity\Ticket::getPurchaseKey">getPurchaseKey</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#56"><abbr title="App\Entity\User::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#123"><abbr title="App\Entity\User::eraseCredentials">eraseCredentials</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#144"><abbr title="App\Entity\User::getTickets">getTickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#149"><abbr title="App\Entity\User::addTicket">addTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#159"><abbr title="App\Entity\User::removeTicket">removeTicket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/CartController.php.html#14"><abbr title="App\Controller\CartController::index">index</abbr></a></td><td class="text-right">50%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Entity/Offer.php.html#124"><abbr title="App\Entity\Offer::removeTicket">removeTicket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Entity/User.php.html#159"><abbr title="App\Entity\User::removeTicket">removeTicket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controller/OfferController.php.html#82"><abbr title="App\Controller\OfferController::delete">delete</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/Offer.php.html#114"><abbr title="App\Entity\Offer::addTicket">addTicket</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/User.php.html#149"><abbr title="App\Entity\User::addTicket">addTicket</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controller/CartController.php.html#14"><abbr title="App\Controller\CartController::index">index</abbr></a></td><td class="text-right">4</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHP 8.4.0</a> and <a href="https://phpunit.de/">PHPUnit 9.6.23</a> at Fri May 23 19:18:23 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([1,0,1,0,0,0,0,2,3,2,1,11], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([15,0,0,0,0,0,1,0,0,0,2,69], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Controller\/AdminStatsController.php.html#10\">App\\Controller\\AdminStatsController<\/a>"],[100,3,"<a href=\"Controller\/Admin\/DashboardController.php.html#14\">App\\Controller\\Admin\\DashboardController<\/a>"],[61.904761904761905,3,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#14\">App\\Controller\\Admin\\OfferCrudController<\/a>"],[77.77777777777779,11,"<a href=\"Controller\/CartController.php.html#12\">App\\Controller\\CartController<\/a>"],[100,1,"<a href=\"Controller\/DefaultController.php.html#11\">App\\Controller\\DefaultController<\/a>"],[100,6,"<a href=\"Controller\/LegalController.php.html#9\">App\\Controller\\LegalController<\/a>"],[89.1891891891892,10,"<a href=\"Controller\/OfferController.php.html#15\">App\\Controller\\OfferController<\/a>"],[100,3,"<a href=\"Controller\/RegistrationController.php.html#17\">App\\Controller\\RegistrationController<\/a>"],[75,2,"<a href=\"Controller\/SecurityController.php.html#10\">App\\Controller\\SecurityController<\/a>"],[95.83333333333334,9,"<a href=\"Controller\/TicketController.php.html#17\">App\\Controller\\TicketController<\/a>"],[71.875,21,"<a href=\"Entity\/Offer.php.html#10\">App\\Entity\\Offer<\/a>"],[83.33333333333334,12,"<a href=\"Entity\/Ticket.php.html#8\">App\\Entity\\Ticket<\/a>"],[64.51612903225806,20,"<a href=\"Entity\/User.php.html#13\">App\\Entity\\User<\/a>"],[100,2,"<a href=\"Form\/OfferForm.php.html#10\">App\\Form\\OfferForm<\/a>"],[100,2,"<a href=\"Form\/RegistrationForm.php.html#17\">App\\Form\\RegistrationForm<\/a>"],[100,0,"<a href=\"Kernel.php.html#8\">App\\Kernel<\/a>"],[100,1,"<a href=\"Repository\/OfferRepository.php.html#12\">App\\Repository\\OfferRepository<\/a>"],[100,2,"<a href=\"Repository\/TicketRepository.php.html#12\">App\\Repository\\TicketRepository<\/a>"],[16.666666666666664,3,"<a href=\"Repository\/UserRepository.php.html#15\">App\\Repository\\UserRepository<\/a>"],[100,5,"<a href=\"Security\/UserAuthenticator.php.html#19\">App\\Security\\UserAuthenticator<\/a>"],[100,4,"<a href=\"Service\/AppExtension.php.html#10\">App\\Service\\AppExtension<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Controller\/AdminStatsController.php.html#12\">App\\Controller\\AdminStatsController::index<\/a>"],[100,1,"<a href=\"Controller\/Admin\/DashboardController.php.html#17\">App\\Controller\\Admin\\DashboardController::index<\/a>"],[100,1,"<a href=\"Controller\/Admin\/DashboardController.php.html#25\">App\\Controller\\Admin\\DashboardController::configureDashboard<\/a>"],[100,1,"<a href=\"Controller\/Admin\/DashboardController.php.html#31\">App\\Controller\\Admin\\DashboardController::configureMenuItems<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#16\">App\\Controller\\Admin\\OfferCrudController::getEntityFqcn<\/a>"],[0,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#21\">App\\Controller\\Admin\\OfferCrudController::configureCrud<\/a>"],[100,1,"<a href=\"Controller\/Admin\/OfferCrudController.php.html#33\">App\\Controller\\Admin\\OfferCrudController::configureFields<\/a>"],[50,3,"<a href=\"Controller\/CartController.php.html#14\">App\\Controller\\CartController::index<\/a>"],[90,5,"<a href=\"Controller\/CartController.php.html#39\">App\\Controller\\CartController::add<\/a>"],[100,2,"<a href=\"Controller\/CartController.php.html#74\">App\\Controller\\CartController::remove<\/a>"],[100,1,"<a href=\"Controller\/CartController.php.html#87\">App\\Controller\\CartController::clear<\/a>"],[100,1,"<a href=\"Controller\/DefaultController.php.html#13\">App\\Controller\\DefaultController::index<\/a>"],[100,1,"<a href=\"Controller\/LegalController.php.html#11\">App\\Controller\\LegalController::privacyPolicy<\/a>"],[100,1,"<a href=\"Controller\/LegalController.php.html#17\">App\\Controller\\LegalController::termsOfUse<\/a>"],[100,1,"<a href=\"Controller\/LegalController.php.html#23\">App\\Controller\\LegalController::cookiePolicy<\/a>"],[100,1,"<a href=\"Controller\/LegalController.php.html#29\">App\\Controller\\LegalController::cookieSettings<\/a>"],[100,2,"<a href=\"Controller\/LegalController.php.html#36\">App\\Controller\\LegalController::editLegalPage<\/a>"],[100,1,"<a href=\"Controller\/OfferController.php.html#18\">App\\Controller\\OfferController::index<\/a>"],[100,3,"<a href=\"Controller\/OfferController.php.html#35\">App\\Controller\\OfferController::new<\/a>"],[100,1,"<a href=\"Controller\/OfferController.php.html#56\">App\\Controller\\OfferController::show<\/a>"],[100,3,"<a href=\"Controller\/OfferController.php.html#64\">App\\Controller\\OfferController::edit<\/a>"],[0,2,"<a href=\"Controller\/OfferController.php.html#82\">App\\Controller\\OfferController::delete<\/a>"],[100,3,"<a href=\"Controller\/RegistrationController.php.html#19\">App\\Controller\\RegistrationController::register<\/a>"],[100,1,"<a href=\"Controller\/SecurityController.php.html#12\">App\\Controller\\SecurityController::login<\/a>"],[0,1,"<a href=\"Controller\/SecurityController.php.html#21\">App\\Controller\\SecurityController::logout<\/a>"],[100,2,"<a href=\"Controller\/TicketController.php.html#19\">App\\Controller\\TicketController::list<\/a>"],[93.33333333333333,6,"<a href=\"Controller\/TicketController.php.html#35\">App\\Controller\\TicketController::checkout<\/a>"],[100,1,"<a href=\"Controller\/TicketController.php.html#86\">App\\Controller\\TicketController::show<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#39\">App\\Entity\\Offer::__construct<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#44\">App\\Entity\\Offer::getId<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#49\">App\\Entity\\Offer::getName<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#54\">App\\Entity\\Offer::setName<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#61\">App\\Entity\\Offer::getDescription<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#66\">App\\Entity\\Offer::setDescription<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#73\">App\\Entity\\Offer::getPrice<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#78\">App\\Entity\\Offer::setPrice<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#85\">App\\Entity\\Offer::getCapacity<\/a>"],[100,4,"<a href=\"Entity\/Offer.php.html#90\">App\\Entity\\Offer::setCapacity<\/a>"],[0,1,"<a href=\"Entity\/Offer.php.html#109\">App\\Entity\\Offer::getTickets<\/a>"],[0,2,"<a href=\"Entity\/Offer.php.html#114\">App\\Entity\\Offer::addTicket<\/a>"],[0,3,"<a href=\"Entity\/Offer.php.html#124\">App\\Entity\\Offer::removeTicket<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#135\">App\\Entity\\Offer::getRemainingCapacity<\/a>"],[100,1,"<a href=\"Entity\/Offer.php.html#140\">App\\Entity\\Offer::setRemainingCapacity<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#31\">App\\Entity\\Ticket::getId<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#36\">App\\Entity\\Ticket::setId<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#43\">App\\Entity\\Ticket::getUser<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#48\">App\\Entity\\Ticket::setUser<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#55\">App\\Entity\\Ticket::getOffer<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#60\">App\\Entity\\Ticket::setOffer<\/a>"],[0,1,"<a href=\"Entity\/Ticket.php.html#67\">App\\Entity\\Ticket::getPurchaseKey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#72\">App\\Entity\\Ticket::setPurchaseKey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#79\">App\\Entity\\Ticket::getFinalKey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#84\">App\\Entity\\Ticket::setFinalKey<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#91\">App\\Entity\\Ticket::getCreatedAt<\/a>"],[100,1,"<a href=\"Entity\/Ticket.php.html#96\">App\\Entity\\Ticket::setCreatedAt<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#50\">App\\Entity\\User::__construct<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#56\">App\\Entity\\User::getId<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#61\">App\\Entity\\User::getEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#66\">App\\Entity\\User::setEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#78\">App\\Entity\\User::getUserIdentifier<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#86\">App\\Entity\\User::getRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#98\">App\\Entity\\User::setRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#108\">App\\Entity\\User::getPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#113\">App\\Entity\\User::setPassword<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#123\">App\\Entity\\User::eraseCredentials<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#129\">App\\Entity\\User::getPrivateKey<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#134\">App\\Entity\\User::setPrivateKey<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#144\">App\\Entity\\User::getTickets<\/a>"],[0,2,"<a href=\"Entity\/User.php.html#149\">App\\Entity\\User::addTicket<\/a>"],[0,3,"<a href=\"Entity\/User.php.html#159\">App\\Entity\\User::removeTicket<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#171\">App\\Entity\\User::getUsername<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#176\">App\\Entity\\User::setUsername<\/a>"],[100,1,"<a href=\"Form\/OfferForm.php.html#12\">App\\Form\\OfferForm::buildForm<\/a>"],[100,1,"<a href=\"Form\/OfferForm.php.html#22\">App\\Form\\OfferForm::configureOptions<\/a>"],[100,1,"<a href=\"Form\/RegistrationForm.php.html#19\">App\\Form\\RegistrationForm::buildForm<\/a>"],[100,1,"<a href=\"Form\/RegistrationForm.php.html#64\">App\\Form\\RegistrationForm::configureOptions<\/a>"],[100,1,"<a href=\"Repository\/OfferRepository.php.html#14\">App\\Repository\\OfferRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/TicketRepository.php.html#14\">App\\Repository\\TicketRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/TicketRepository.php.html#24\">App\\Repository\\TicketRepository::countSalesByOffer<\/a>"],[100,1,"<a href=\"Repository\/UserRepository.php.html#17\">App\\Repository\\UserRepository::__construct<\/a>"],[0,2,"<a href=\"Repository\/UserRepository.php.html#25\">App\\Repository\\UserRepository::upgradePassword<\/a>"],[100,1,"<a href=\"Security\/UserAuthenticator.php.html#25\">App\\Security\\UserAuthenticator::__construct<\/a>"],[100,1,"<a href=\"Security\/UserAuthenticator.php.html#29\">App\\Security\\UserAuthenticator::authenticate<\/a>"],[100,2,"<a href=\"Security\/UserAuthenticator.php.html#45\">App\\Security\\UserAuthenticator::onAuthenticationSuccess<\/a>"],[100,1,"<a href=\"Security\/UserAuthenticator.php.html#54\">App\\Security\\UserAuthenticator::getLoginUrl<\/a>"],[100,1,"<a href=\"Service\/AppExtension.php.html#15\">App\\Service\\AppExtension::__construct<\/a>"],[100,3,"<a href=\"Service\/AppExtension.php.html#21\">App\\Service\\AppExtension::getGlobals<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
