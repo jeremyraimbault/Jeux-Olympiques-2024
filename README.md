@@ -4,10 +4,10 @@
 
 - [Présentation du projet](#présentation-du-projet)  
 - [Installation locale](#installation-locale)  
-- [Documentation technique](#documentation-technique)  
-- [Manuel d’utilisation](#manuel-dutilisation)  
-- [Tests](#tests)  
-- [Évolutions futures](#évolutions-futures)  
+- [Documentation technique](docs/documentation-technique.md)  
+- [Manuel d’utilisation](docs/manuel-utilisateur.md)  
+- [Tests dans la branche test](#tests)  
+- [Évolutions futures](docs/documentation-technique.md#évolutions-futures)  
 
 ---
 
